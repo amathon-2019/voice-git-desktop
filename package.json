@@ -11,6 +11,8 @@
     "electron:dev": "webpack --config webpack.electron.config.js --watch"
   },
   "devDependencies": {
+    "@types/fs-extra": "^8.0.0",
+    "@types/nodegit": "^0.24.10",
     "awesome-typescript-loader": "^5.2.1",
     "electron": "^6.0.7",
     "parcel-bundler": "^1.12.3",
@@ -18,5 +20,12 @@
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7"
+  },
+  "dependencies": {
+    "electron-store": "^4.0.0",
+    "file-url": "^3.0.0",
+    "fs-extra": "^8.1.0",
+    "nodegit": "^0.25.1",
+    "request": "^2.88.0"
   }
 }
