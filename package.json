@@ -7,8 +7,8 @@
   "private": true,
   "scripts": {
     "start": "electron .",
-    "browser:app:dev": "parcel src/browser/app/index.html -d dist/browser/app/",
-    "browser:start:dev": "parcel src/browser/start/index.html -d dist/browser/start/",
+    "browser:app:dev": "parcel src/browser/app/index.html -d dist/browser/app/ -p 1234",
+    "browser:start:dev": "parcel src/browser/start/index.html -d dist/browser/start/ -p 1235",
     "electron:dev": "webpack --config webpack.electron.config.js --watch",
     "postinstall": "yarn electron-rebuild nodegit"
   },
