@@ -1,6 +1,6 @@
 import { FormControlLabel, makeStyles, Radio, RadioGroup } from '@material-ui/core';
 import React, { memo, useCallback, useState } from 'react';
-import { User } from '../../core/models';
+import { User } from '../../../core/user';
 import { userDatabase } from '../../core/user-database';
 import TokenLoginForm from '../components/TokenLoginForm';
 import UsernameAndPasswordLoginForm from '../components/UsernameAndPasswordLoginForm';

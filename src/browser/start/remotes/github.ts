@@ -1,5 +1,5 @@
+import { User } from '../../../core/user';
 import { httpClient } from '../../core/http';
-import { User } from '../../core/models';
 import { makeBasicAuthHeader, makeOauth2TokenAuthHeader } from '../utils/auth-header';
 
 interface GithubUserResponse {

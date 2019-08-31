@@ -1,6 +1,6 @@
 import Dexie from 'dexie';
+import { User } from '../../core/user';
 import { Database } from './database';
-import { User } from './models';
 
 interface UserInfo extends User {
 }
