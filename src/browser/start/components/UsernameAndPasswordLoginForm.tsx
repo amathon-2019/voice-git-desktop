@@ -1,7 +1,7 @@
 import { Button, FormControl, FormHelperText, makeStyles, TextField } from '@material-ui/core';
 import { AxiosError } from 'axios';
 import React, { ChangeEvent, FormEvent, memo, useCallback, useMemo, useState } from 'react';
-import { User } from '../../core/models';
+import { User } from '../../../core/user';
 import { authorizeByBasic } from '../remotes/github';
 
 interface Props {

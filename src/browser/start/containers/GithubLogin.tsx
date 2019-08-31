@@ -1,9 +1,10 @@
 import { FormControlLabel, makeStyles, Radio, RadioGroup } from '@material-ui/core';
 import React, { memo, useCallback, useState } from 'react';
-import { User } from '../../core/models';
+import { User } from '../../../core/user';
 import { userDatabase } from '../../core/user-database';
 import TokenLoginForm from '../components/TokenLoginForm';
 import UsernameAndPasswordLoginForm from '../components/UsernameAndPasswordLoginForm';
+import { postUserLogin } from '../remotes/api';
 
 type LoginType = 'usernameAndPassword' | 'token';
 
@@ -28,8 +29,8 @@ function GithubLogin({ onComplete }: Props) {
 
   const handleLogin = useCallback(async (user: User) => {
     await userDatabase.update(user);
-    const res = await userDatabase.getUser(user.username);
-    console.log(res);
+    await postUserLogin(user);
+
     onComplete();
   }, [onComplete]);
 
