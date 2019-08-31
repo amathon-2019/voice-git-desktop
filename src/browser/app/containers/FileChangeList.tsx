@@ -41,7 +41,6 @@ export default function FileChangeList() {
   useEffect(() => {
     getFileChanges().then((result) => {
       setFileChanges(result);
-      setCheckedIndexes(new Array(result.length).fill(0).map((_, index) => index));
     });
   }, []);
 
