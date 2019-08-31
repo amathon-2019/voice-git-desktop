@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "start": "electron .",
-    "browser:app:dev": "parcel src/browser/app/index.html -d dist/browser/app/ -p 1234",
+    "browser:app:dev": "webpack-dev-server --config webpack.browser.app.config.js",
     "browser:start:dev": "webpack-dev-server --config webpack.browser.start.config.js",
     "electron:dev": "webpack --config webpack.electron.config.js --watch",
     "postinstall": "yarn electron-rebuild nodegit"
