@@ -1,0 +1,8 @@
+{
+  "name": "voice-git-desktop",
+  "version": "1.0.0",
+  "main": "main.ts",
+  "repository": "https://github.com/amathon-2019/voice-git-desktop",
+  "license": "MIT",
+  "private": true
+}
