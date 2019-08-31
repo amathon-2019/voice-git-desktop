@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "src/"
+  },
+  "include": [
+    "src/main-process/",
+    "src/core",
+    "src/libs/"
+  ],
+  "exclude": [
+    "src/browser/",
+    "test/",
+    "**/*.spec.ts",
+    "**/dummies.ts",
+    "**/fixtures.ts"
+  ]
+}

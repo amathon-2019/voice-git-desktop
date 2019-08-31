@@ -1,0 +1,23 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "inlineSources": true,
+    "sourceMap": true,
+    "declaration": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2015",
+    "lib": [
+      "esnext.asynciterable",
+      "es2017",
+      "dom"
+    ]
+  },
+  "exclude": [
+    "dist/",
+    "build/",
+    "node_modules/"
+  ]
+}
