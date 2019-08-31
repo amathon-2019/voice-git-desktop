@@ -1,12 +1,8 @@
 import React from 'react';
-import InfiniteScroll from '../components/InfiniteScroll';
+import CommitList from './CommitList';
 
 export default function History() {
   return (
-    <InfiniteScroll onScroll={() => { console.log('hello') }}>
-      <div style={{ height: '1000px' }} />
-      <div style={{ height: '1000px' }} />
-      <div style={{ height: '1000px' }} />
-    </InfiniteScroll>
+    <CommitList/>
   );
 }

@@ -3,6 +3,7 @@ import React, { useCallback, useState } from 'react';
 import { TabId } from '../models/tab';
 import Header from './Header';
 import History from './History';
+import PerformCommit from './PerformCommit';
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -27,8 +28,8 @@ export default function App() {
     <div className={classes.container}>
       <Header onTabChange={handleTabChange}/>
       <div className={classes.body}>
-        {tab === 'history' ? <History /> : (tab === 'commit' ? null : null)}
+        {tab === 'history' ? <History/> : (tab === 'commit' ? <PerformCommit/> : null)}
       </div>
     </div>
-  )
+  );
 }
