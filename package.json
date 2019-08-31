@@ -1,0 +1,31 @@
+{
+  "name": "voice-git-desktop",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "repository": "https://github.com/amathon-2019/voice-git-desktop",
+  "license": "MIT",
+  "private": true, 
+  "scripts": {
+    "start": "electron .",
+    "browser:dev": "parcel ./src/browser/index.html -d dist/browser/",
+    "electron:dev": "webpack --config webpack.electron.config.js --watch"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.3.3",
+    "@material-ui/styles": "^4.3.3",
+    "@opuscapita/react-responsive-navbar": "^3.3.3",
+    "react": "^16.3.0",
+    "react-audio-recorder": "^2.2.0",
+    "react-dom": "^16.8.0",
+    "react-tabs": "^3.0.0"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "electron": "^6.0.7",
+    "parcel-bundler": "^1.12.3",
+    "typescript": "^3.6.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
+  }
+}
