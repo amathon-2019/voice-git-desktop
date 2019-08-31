@@ -1,12 +1,11 @@
 import { app, session } from 'electron';
 import { EventEmitter } from 'events';
-import { IpcServer } from '../libs/ipc';
 import { __DARWIN__ } from '../libs/platform';
 import { Git } from './git';
 import { Window, WindowEvents } from './interfaces/window';
 import { AppWindow } from './windows/app-window';
 import { StartWindow } from './windows/start-window';
-import { Workspace } from './workspace';
+import { Workspace, WorkspaceEvents } from './workspace';
 
 enum AppDelegateEvents {
   OPEN_WINDOW = 'app.openWindow',
@@ -19,10 +18,6 @@ class AppDelegate extends EventEmitter {
   // Services
   readonly git = new Git();
   readonly workspace = new Workspace(this.git);
-
-  // Ipc
-  readonly gitIpc = new IpcServer('git');
-  readonly workspaceIpc = new IpcServer('workspace');
 
   currentOpenWindow: Window | null = null;
   preventQuit: boolean = false;
@@ -110,12 +105,12 @@ class AppDelegate extends EventEmitter {
      * It will be handle for once because workspace is initialized
      * only at first time.
      * */
-    // this.workspace.once(WorkspaceEvents.CREATED, async () => {
-    //   // Since current window is 'WizardWindow', close it
-    //   // and open 'AppWindow'.
-    //   this.closeCurrentWindow();
-    //   this.openWindow('app');
-    // });
+    this.workspace.once(WorkspaceEvents.INITIALIZED, async () => {
+      // Since current window is 'WizardWindow', close it
+      // and open 'AppWindow'.
+      this.closeCurrentWindow();
+      this.openWindow('app');
+    });
 
     // Handle session
     session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
