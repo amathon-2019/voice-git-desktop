@@ -14,9 +14,7 @@ export class Git extends IpcService {
 
   async isRepositoryExists(dirPath: string): Promise<boolean> {
     try {
-      const repository = await this.openRepository(dirPath);
-      repository.free();
-
+      await this.openRepository(dirPath);
       return true;
     } catch (error) {
       return false;
@@ -35,11 +33,8 @@ export class Git extends IpcService {
       //  See: https://github.com/libgit2/libgit2/issues/429
       flags: this.git.Status.OPT.INCLUDE_UNTRACKED,
     });
-    const fileChanges = statues.map(status => this.parseFileChange(dirPath, status));
 
-    repository.free();
-
-    return fileChanges;
+    return statues.map(status => this.parseFileChange(dirPath, status));
   }
 
   private parseFileChange(workingDir: string, status: StatusFile): GitFileChange {

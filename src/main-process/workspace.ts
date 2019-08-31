@@ -10,6 +10,10 @@ interface WorkspaceData {
   path: string;
 }
 
+export enum WorkspaceEvents {
+  INITIALIZED = 'workspace.initialized',
+}
+
 export class Workspace extends IpcService {
   private readonly dataFilePath: string;
   private data: WorkspaceData | null = null;
@@ -45,8 +49,8 @@ export class Workspace extends IpcService {
     }
   }
 
-  @IpcActionHandler('setPath')
-  async setPath(workspacePath: string) {
+  @IpcActionHandler('init')
+  async init(workspacePath: string) {
     if (!await pathExists(workspacePath)) {
       throw workspacePathNotExistsException();
     }
@@ -61,5 +65,7 @@ export class Workspace extends IpcService {
 
     this.data.path = workspacePath;
     await writeJson(this.dataFilePath, this.data);
+
+    this.emit(WorkspaceEvents.INITIALIZED);
   }
 }

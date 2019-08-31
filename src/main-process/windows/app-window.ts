@@ -10,6 +10,9 @@ export class AppWindow extends Window {
       height: 768,
       show: false,
       title: 'Voice Git',
+      webPreferences: {
+        nodeIntegration: true,
+      },
     });
   }
 

@@ -8,26 +8,39 @@
   "scripts": {
     "start": "electron .",
     "browser:app:dev": "parcel src/browser/app/index.html -d dist/browser/app/ -p 1234",
-    "browser:start:dev": "parcel src/browser/start/index.html -d dist/browser/start/ -p 1235",
+    "browser:start:dev": "webpack-dev-server --config webpack.browser.start.config.js",
     "electron:dev": "webpack --config webpack.electron.config.js --watch",
     "postinstall": "yarn electron-rebuild nodegit"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
     "@types/fs-extra": "^8.0.0",
     "@types/nodegit": "^0.24.10",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
     "awesome-typescript-loader": "^5.2.1",
     "electron": "^6.0.7",
     "electron-rebuild": "^1.8.6",
+    "html-webpack-plugin": "^3.2.0",
     "parcel-bundler": "^1.12.3",
+    "ts-loader": "^6.0.4",
     "typescript": "^3.6.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7"
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.5.5",
+    "@material-ui/core": "^4.3.3",
+    "@material-ui/icons": "^4.2.1",
+    "axios": "^0.19.0",
+    "dexie": "^2.0.4",
     "file-url": "^3.0.0",
     "fs-extra": "^8.1.0",
     "nodegit": "^0.25.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "request": "^2.88.0"
   }
 }
