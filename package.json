@@ -25,7 +25,6 @@
     "webpack-cli": "^3.3.7"
   },
   "dependencies": {
-    "electron-store": "^4.0.0",
     "file-url": "^3.0.0",
     "fs-extra": "^8.1.0",
     "nodegit": "^0.25.1",
