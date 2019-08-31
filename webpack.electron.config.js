@@ -42,7 +42,10 @@ const config = {
     __dirname: false,
     __filename: false,
   },
-  target: 'electron-main'
+  target: 'electron-main',
+  externals: {
+    nodegit: 'require("nodegit")',
+  },
 };
 
 

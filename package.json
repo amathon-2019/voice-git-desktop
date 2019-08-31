@@ -7,16 +7,27 @@
   "private": true,
   "scripts": {
     "start": "electron .",
-    "browser:dev": "parcel ./src/browser/index.html -d dist/browser/",
-    "electron:dev": "webpack --config webpack.electron.config.js --watch"
+    "browser:app:dev": "parcel src/browser/app/index.html -d dist/browser/app/ -p 1234",
+    "browser:start:dev": "parcel src/browser/start/index.html -d dist/browser/start/ -p 1235",
+    "electron:dev": "webpack --config webpack.electron.config.js --watch",
+    "postinstall": "yarn electron-rebuild nodegit"
   },
   "devDependencies": {
+    "@types/fs-extra": "^8.0.0",
+    "@types/nodegit": "^0.24.10",
     "awesome-typescript-loader": "^5.2.1",
     "electron": "^6.0.7",
+    "electron-rebuild": "^1.8.6",
     "parcel-bundler": "^1.12.3",
     "typescript": "^3.6.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7"
+  },
+  "dependencies": {
+    "file-url": "^3.0.0",
+    "fs-extra": "^8.1.0",
+    "nodegit": "^0.25.1",
+    "request": "^2.88.0"
   }
 }

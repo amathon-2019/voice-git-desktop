@@ -1,8 +1,22 @@
-import { app, BrowserWindow } from 'electron';
+import { app } from 'electron';
+import { appDelegate } from './app-delegate';
 
-let mainWindow;
+process.on('uncaughtException', (error) => {
+  appDelegate.preventQuit = true;
 
-app.on('ready', () => {
-  mainWindow = new BrowserWindow({ width: 420, height: 700 });
-  mainWindow.loadURL('http://localhost:1234');
+  console.error('Uncaught Exception: ', error.toString());
+
+  if (error.stack) {
+    console.error(error.stack);
+  }
+});
+
+app.once('ready', async () => {
+  try {
+    await appDelegate.run();
+    console.log('START! 🤔');
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
 });
