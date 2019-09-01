@@ -28,8 +28,8 @@ function GithubLogin({ onComplete }: Props) {
   }, []);
 
   const handleLogin = useCallback(async (user: User) => {
-    await userDatabase.update(user);
-    await postUserLogin(user);
+    const id = await postUserLogin(user);
+    await userDatabase.update(id, user);
 
     onComplete();
   }, [onComplete]);

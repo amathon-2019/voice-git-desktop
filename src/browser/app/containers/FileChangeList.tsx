@@ -1,5 +1,5 @@
 import { List, makeStyles } from '@material-ui/core';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { GitFileChange } from '../../../core/git';
 import { fetchFileChanges } from '../remotes/git';
 import { fetchWorkspacePath } from '../remotes/workspace';
@@ -18,7 +18,11 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function FileChangeList() {
+interface Props {
+  onChange: (fileChanges: GitFileChange[]) => void;
+}
+
+function FileChangeList({ onChange }: Props) {
   const classes = useStyles([]);
   const [fileChanges, setFileChanges] = useState<GitFileChange[]>([]);
   const [checkedIndexes, setCheckedIndexes] = useState([]);
@@ -26,17 +30,21 @@ export default function FileChangeList() {
   const handleToggle = useCallback((index) => {
     setCheckedIndexes(indexes => {
       const i = indexes.findIndex(v => v === index);
+      let nextIndexes;
 
       if (i === -1) {
-        return [...indexes, index];
+        nextIndexes = [...indexes, index];
       } else {
-        const newIndexes = [...indexes];
-        newIndexes.splice(i, 1);
-
-        return newIndexes;
+        nextIndexes = [...indexes];
+        nextIndexes.splice(i, 1);
       }
+
+      const selectedFileChanges = fileChanges.filter((_, i) => nextIndexes.includes(i));
+      onChange(selectedFileChanges);
+
+      return nextIndexes;
     });
-  }, []);
+  }, [onChange]);
 
   useEffect(() => {
     getFileChanges().then((result) => {
@@ -59,3 +67,5 @@ export default function FileChangeList() {
     </div>
   );
 }
+
+export default memo(FileChangeList);

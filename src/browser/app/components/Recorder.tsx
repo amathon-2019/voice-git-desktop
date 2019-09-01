@@ -6,12 +6,6 @@ interface Props {
   onRecord?: (data: Blob) => void;
 }
 
-const mimeType = 'audio/webm';
-
-function useRecording(onComplete: (data: Blob) => void) {
-
-}
-
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
     flex: 'none',
