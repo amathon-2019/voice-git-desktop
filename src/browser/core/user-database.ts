@@ -3,30 +3,32 @@ import { User } from '../../core/user';
 import { Database } from './database';
 
 interface UserInfo extends User {
+  id: number;
+  userId: number;
 }
 
 export class UserDatabase extends Database {
-  readonly info!: Dexie.Table<UserInfo, string>;
+  readonly info!: Dexie.Table<UserInfo, number>;
 
   constructor() {
     super('User');
 
     this.conditionalVersion(1, {
-      info: 'username, displayName, email, avatarImageUrl, profileUrl',
+      info: 'id, userId, username, displayName, email, avatarImageUrl, profileUrl',
     });
   }
 
-  async getUser(username: string) {
-    return await this.info.get(username);
+  async getUser() {
+    return await this.info.get(1);
   }
 
-  async update(user: User) {
-    const info = await this.getUser(user.username);
+  async update(userId: number, user: User) {
+    const info = await this.getUser();
 
     if (!info) {
-      await this.info.add(user);
+      await this.info.add({ id: 1, userId, ...user });
     } else {
-      await this.info.update(user.username, user);
+      await this.info.update(1, { userId, ...user });
     }
   }
 }
